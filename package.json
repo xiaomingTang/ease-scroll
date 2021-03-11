@@ -1,5 +1,5 @@
 {
-  "name": "@xm/ease-scroll",
+  "name": "ease-scroll",
   "description": "便捷地构建类似 miui 官网: https://home.miui.com/ 的页面滚动动画",
   "version": "1.0.1",
   "main": "./dist/umd/index.js",
