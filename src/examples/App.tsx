@@ -10,6 +10,7 @@ import { randomInt, randomPick } from "@Src/utils/math"
 import {
   simpleFadeIn, simpleFadeOut, simpleLeftToRight, simpleRightToLeft, simpleTopToBottom, simpleBottomToTop, simpleZoomIn, simpleZoomOut, simpleRotate, simpleFlipX, simpleFlipY,
 } from "@Src/utils/gene-style"
+import F1 from "@Src/assets/f-1.jpg"
 
 import Styles from "./App.module.less"
 
@@ -30,7 +31,7 @@ const genePages = (size: Size) => animations.map((_, idx) => {
     thePercentage, page, pageIndex, prevStep,
   }: EaseElemOptions) {
     return (<EaseFixedFullStepElem size={size} style={{ background: bg }}>
-      <img src="./f-1.jpg" alt="" className={Styles.fg} style={geneStyle.func({
+      <img src={F1} alt="" className={Styles.fg} style={geneStyle.func({
         thePercentage, page, pageIndex, prevStep,
       })} />
       <div className={Styles.t}>

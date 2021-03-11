@@ -1,6 +1,6 @@
 {
   "name": "ease-scroll",
-  "description": "便捷地构建类似 [miui官网](https://home.miui.com/) 的页面滚动动画",
+  "description": "便捷地构建类似 miui 官网: https://home.miui.com/ 的页面滚动动画",
   "version": "1.0.0",
   "main": "./dist/umd/index.js",
   "module": "./dist/esm/index.js",
@@ -21,12 +21,13 @@
   },
   "license": "MIT",
   "scripts": {
-    "start": "     cross-env NODE_ENV=development TS_NODE_PROJECT=\"config/tsconfig-for-webpack-config.json\" webpack-dev-server --config ./config/webpack.dev.config.ts",
-    "build:cjs": " cross-env NODE_ENV=production  TS_NODE_PROJECT=\"config/tsconfig-for-webpack-config.json\" webpack            --config ./config/webpack.prod.config.ts",
-    "build:mjs": " tsc -m es6 --outDir dist/esm",
-    "build": "yarn run build:cjs & yarn run build:mjs",
-    "lint": "      eslint src       --ext .ts --ext .tsx",
-    "lint:fix": "  eslint src --fix --ext .ts --ext .tsx"
+    "start": "          cross-env NODE_ENV=development TS_NODE_PROJECT=\"config/tsconfig-for-webpack-config.json\" webpack-dev-server --config ./config/webpack.dev.config.ts",
+    "build:examples": " cross-env NODE_ENV=production  TS_NODE_PROJECT=\"config/tsconfig-for-webpack-config.json\" webpack            --config ./config/webpack.examples.config.ts",
+    "build:cjs": "      cross-env NODE_ENV=production  TS_NODE_PROJECT=\"config/tsconfig-for-webpack-config.json\" webpack            --config ./config/webpack.prod.config.ts",
+    "build:mjs": "      tsc -m es6 --outDir dist/esm",
+    "build": "          yarn run build:cjs & yarn run build:mjs & yarn run build:examples",
+    "lint": "           eslint src       --ext .ts --ext .tsx",
+    "lint:fix": "       eslint src --fix --ext .ts --ext .tsx"
   },
   "peerDependencies": {
     "react": "^16.13.1",

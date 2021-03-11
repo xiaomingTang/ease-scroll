@@ -6,6 +6,7 @@ import { useSize } from "@Src/utils/use-size";
 import { EaseFixedFullStepElem } from "@Src/components/EaseElem";
 import { randomInt, randomPick } from "@Src/utils/math";
 import { simpleFadeIn, simpleFadeOut, simpleLeftToRight, simpleRightToLeft, simpleTopToBottom, simpleBottomToTop, simpleZoomIn, simpleZoomOut, simpleRotate, simpleFlipX, simpleFlipY, } from "@Src/utils/gene-style";
+import F1 from "@Src/assets/f-1.jpg";
 import Styles from "./App.module.less";
 const animations = [
     simpleFadeIn, simpleFadeOut, simpleLeftToRight, simpleRightToLeft, simpleTopToBottom, simpleBottomToTop, simpleZoomIn, simpleZoomOut, simpleRotate, simpleFlipX, simpleFlipY,
@@ -21,7 +22,7 @@ const genePages = (size) => animations.map((_, idx) => {
     colspan: randomPick(2, 4),
     elem({ thePercentage, page, pageIndex, prevStep, }) {
         return (React.createElement(EaseFixedFullStepElem, { size: size, style: { background: bg } },
-            React.createElement("img", { src: "./f-1.jpg", alt: "", className: Styles.fg, style: geneStyle.func({
+            React.createElement("img", { src: F1, alt: "", className: Styles.fg, style: geneStyle.func({
                     thePercentage, page, pageIndex, prevStep,
                 }) }),
             React.createElement("div", { className: Styles.t },
