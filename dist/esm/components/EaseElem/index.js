@@ -1,6 +1,7 @@
 import React from "react";
 export function EaseFullStepElem({ size, style, children, ...props }) {
     return React.createElement("div", Object.assign({ style: {
+            maxWidth: "100%",
             width: `${size.width}px`,
             height: `${size.height}px`,
             ...style,

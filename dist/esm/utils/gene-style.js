@@ -1,15 +1,15 @@
 import { clamp } from "./math";
-function pipePercentage({ thePercentage, page, }, ratio = 1.5) {
-    if (page.colspan === 1) {
+function pipePercentage({ thePercentage, thePage, }, ratio = 1.5) {
+    if (thePage.colspan === 1) {
         return 1;
     }
-    const endPercentage = (page.colspan - 1) / page.colspan;
+    const endPercentage = (thePage.colspan - 1) / thePage.colspan;
     return clamp((thePercentage / endPercentage) * ratio, 0, 1);
 }
 export const simpleFadeIn = {
     desc: "简单淡入",
     func(options) {
-        if (options.page.colspan <= 1) {
+        if (options.thePage.colspan <= 1) {
             return {};
         }
         return {
@@ -20,7 +20,7 @@ export const simpleFadeIn = {
 export const simpleFadeOut = {
     desc: "简单淡出",
     func(options) {
-        if (options.page.colspan <= 1) {
+        if (options.thePage.colspan <= 1) {
             return {};
         }
         return {
@@ -31,7 +31,7 @@ export const simpleFadeOut = {
 export const simpleLeftToRight = {
     desc: " > > > ",
     func(options) {
-        if (options.page.colspan <= 1) {
+        if (options.thePage.colspan <= 1) {
             return {};
         }
         return {
@@ -46,7 +46,7 @@ export const simpleLeftToRight = {
 export const simpleRightToLeft = {
     desc: " < < < ",
     func(options) {
-        if (options.page.colspan <= 1) {
+        if (options.thePage.colspan <= 1) {
             return {};
         }
         return {
@@ -61,7 +61,7 @@ export const simpleRightToLeft = {
 export const simpleTopToBottom = {
     desc: " V V V ",
     func(options) {
-        if (options.page.colspan <= 1) {
+        if (options.thePage.colspan <= 1) {
             return {};
         }
         return {
@@ -76,7 +76,7 @@ export const simpleTopToBottom = {
 export const simpleBottomToTop = {
     desc: " ^ ^ ^ ",
     func(options) {
-        if (options.page.colspan <= 1) {
+        if (options.thePage.colspan <= 1) {
             return {};
         }
         return {
@@ -91,7 +91,7 @@ export const simpleBottomToTop = {
 export const simpleZoomIn = {
     desc: "放大",
     func(options) {
-        if (options.page.colspan <= 1) {
+        if (options.thePage.colspan <= 1) {
             return {};
         }
         return {
@@ -102,7 +102,7 @@ export const simpleZoomIn = {
 export const simpleZoomOut = {
     desc: "缩小",
     func(options) {
-        if (options.page.colspan <= 1) {
+        if (options.thePage.colspan <= 1) {
             return {};
         }
         return {
@@ -113,7 +113,7 @@ export const simpleZoomOut = {
 export const simpleRotate = {
     desc: "旋转",
     func(options) {
-        if (options.page.colspan <= 1) {
+        if (options.thePage.colspan <= 1) {
             return {};
         }
         return {
@@ -124,7 +124,7 @@ export const simpleRotate = {
 export const simpleFlipX = {
     desc: "X 轴翻转",
     func(options) {
-        if (options.page.colspan <= 1) {
+        if (options.thePage.colspan <= 1) {
             return {};
         }
         return {
@@ -135,7 +135,7 @@ export const simpleFlipX = {
 export const simpleFlipY = {
     desc: "Y 轴翻转",
     func(options) {
-        if (options.page.colspan <= 1) {
+        if (options.thePage.colspan <= 1) {
             return {};
         }
         return {

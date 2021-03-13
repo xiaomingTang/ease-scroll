@@ -25,6 +25,24 @@ body {
   top: 50%;
   width: 20em;
   padding: 1em;
-  background: rgba(0, 0, 0, .2);
+  background: rgba(0, 0, 0, .5);
   color: white;
+  backdrop-filter: blur(5px);
+}
+
+.back-top {
+  position: fixed;
+  z-index: 10;
+  bottom: 30px;
+  right: 50px;
+  padding: .5em 1em;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, .5);
+  backdrop-filter: blur(5px);
+  color: white;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, .7);;
+  }
 }

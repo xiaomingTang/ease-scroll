@@ -12,6 +12,7 @@ export function EaseFullStepElem({
   ...props
 }: EaseFullStepElemProps) {
   return <div style={{
+    maxWidth: "100%",
     width: `${size.width}px`,
     height: `${size.height}px`,
     ...style,
