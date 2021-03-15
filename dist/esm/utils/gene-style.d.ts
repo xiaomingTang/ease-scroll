@@ -1,5 +1,5 @@
 /// <reference types="react" />
-import { EaseElemOptions } from "@Src/main";
+import { EaseElemOptions } from "../main";
 export interface GeneStyleFunc {
     (options: EaseElemOptions): React.CSSProperties;
 }

@@ -1,5 +1,5 @@
 import { HTMLAttributes } from "react";
-import { Size } from "@Src/utils/use-size";
+import { Size } from "../../utils/use-size";
 interface EaseFullStepElemProps extends HTMLAttributes<HTMLDivElement> {
     size: Size;
 }

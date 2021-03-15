@@ -1,5 +1,7 @@
-import "../polyfills/index";
-import "./global.less";
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+require("../polyfills/index");
+require("./global.less");
 // 注册 service worker
 if ("serviceWorker" in navigator) {
     window.addEventListener("load", () => {

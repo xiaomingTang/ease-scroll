@@ -1,17 +1,39 @@
-import { conditions } from "../utils/logic";
-import React, { useCallback, useMemo, useRef, useState, } from "react";
-export function EaseScroll({ alwaysRender = false, pageSize: { width: pageWidth, height: pageHeight, }, pages, }) {
-    const [curPageIndex, setCurPageIndex] = useState(0);
+"use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.EaseScroll = void 0;
+const logic_1 = require("../utils/logic");
+const react_1 = __importStar(require("react"));
+function EaseScroll({ alwaysRender = false, pageSize: { width: pageWidth, height: pageHeight, }, pages, }) {
+    const [curPageIndex, setCurPageIndex] = react_1.useState(0);
     // percentages === [thePercentage, nextPercentage]
-    const [percentages, setPercentages] = useState([0, 1]);
-    const ref = useRef();
-    const steps = useMemo(() => pages.map((page, pageIndex) => pages.reduce((prev, cur, idx) => {
+    const [percentages, setPercentages] = react_1.useState([0, 1]);
+    const ref = react_1.useRef();
+    const steps = react_1.useMemo(() => pages.map((page, pageIndex) => pages.reduce((prev, cur, idx) => {
         if (idx < pageIndex) {
             return prev + cur.colspan;
         }
         return prev;
     }, 0)), [pages]);
-    const onScroll = useCallback((e) => {
+    const onScroll = react_1.useCallback((e) => {
         const { scrollTop = 0, } = e.target;
         let varCurPageIndex = 0;
         let curStep = 0;
@@ -35,7 +57,7 @@ export function EaseScroll({ alwaysRender = false, pageSize: { width: pageWidth,
         setCurPageIndex(varCurPageIndex);
         setPercentages([thePercentage, nextPercentage]);
     }, [pageHeight, pages]);
-    const scrollTo = useCallback((tarPageIndex, tarStepIndex = 0, behavior = "smooth") => {
+    const scrollTo = react_1.useCallback((tarPageIndex, tarStepIndex = 0, behavior = "smooth") => {
         const elem = ref.current;
         if (elem) {
             const tarStep = steps.reduce((prev, cur, index) => (index <= tarPageIndex ? prev + cur : prev), 0) + tarStepIndex;
@@ -46,21 +68,21 @@ export function EaseScroll({ alwaysRender = false, pageSize: { width: pageWidth,
         }
     }, [steps, pageHeight]);
     // @ts-ignore
-    return React.createElement("div", { ref: ref, onScroll: onScroll, style: {
+    return react_1.default.createElement("div", { ref: ref, onScroll: onScroll, style: {
             width: `${pageWidth}px`,
             height: `${pageHeight}px`,
             overflowX: "hidden",
             overflowY: "auto",
         } }, pages.map((page, pageIndex) => {
         var _a;
-        return (React.createElement("div", Object.assign({ key: pageIndex }, page.pageProps, { style: {
+        return (react_1.default.createElement("div", Object.assign({ key: pageIndex }, page.pageProps, { style: {
                 position: "relative",
                 overflow: "visible",
                 width: `${pageWidth}px`,
                 height: `${pageHeight * page.colspan}px`,
                 ...(_a = page.pageProps) === null || _a === void 0 ? void 0 : _a.style,
             } }), (() => {
-            const thePercentage = conditions([
+            const thePercentage = logic_1.conditions([
                 [pageIndex < curPageIndex, 1],
                 [pageIndex === curPageIndex, percentages[0]],
                 [pageIndex === curPageIndex + 1, percentages[1]],
@@ -79,8 +101,9 @@ export function EaseScroll({ alwaysRender = false, pageSize: { width: pageWidth,
                     scrollTo,
                 });
             }
-            return React.createElement(React.Fragment, null);
+            return react_1.default.createElement(react_1.default.Fragment, null);
         })()));
     }));
 }
+exports.EaseScroll = EaseScroll;
 //# sourceMappingURL=index.js.map

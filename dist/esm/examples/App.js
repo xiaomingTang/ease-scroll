@@ -1,12 +1,12 @@
 import { hot } from "react-hot-loader/root";
 import React from "react";
-import "@Src/examples/global/global";
-import { EaseScroll } from "@Src/main/index";
-import { useSize } from "@Src/utils/use-size";
-import { EaseFixedFullStepElem } from "@Src/components/EaseElem";
-import { randomInt, randomPick } from "@Src/utils/math";
-import { simpleFadeIn, simpleFadeOut, simpleLeftToRight, simpleRightToLeft, simpleTopToBottom, simpleBottomToTop, simpleZoomIn, simpleZoomOut, simpleRotate, simpleFlipX, simpleFlipY, } from "@Src/utils/gene-style";
-import F1 from "@Src/assets/f-1.jpg";
+import "./global/global";
+import { EaseScroll } from "../main/index";
+import { useSize } from "../utils/use-size";
+import { EaseFixedFullStepElem } from "../components/EaseElem";
+import { randomInt, randomPick } from "../utils/math";
+import { simpleFadeIn, simpleFadeOut, simpleLeftToRight, simpleRightToLeft, simpleTopToBottom, simpleBottomToTop, simpleZoomIn, simpleZoomOut, simpleRotate, simpleFlipX, simpleFlipY, } from "../utils/gene-style";
+import F1 from "../assets/f-1.jpg";
 import Styles from "./App.module.less";
 const animations = [
     simpleFadeIn, simpleFadeOut, simpleLeftToRight, simpleRightToLeft, simpleTopToBottom, simpleBottomToTop, simpleZoomIn, simpleZoomOut, simpleRotate, simpleFlipX, simpleFlipY,
