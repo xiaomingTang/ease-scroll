@@ -51,32 +51,36 @@ export function EaseScroll({ alwaysRender = false, pageSize: { width: pageWidth,
             height: `${pageHeight}px`,
             overflowX: "hidden",
             overflowY: "auto",
-        } }, pages.map((page, pageIndex) => (React.createElement("div", { key: pageIndex, style: {
-            position: "relative",
-            overflow: "visible",
-            width: `${pageWidth}px`,
-            height: `${pageHeight * page.colspan}px`,
-        } }, (() => {
-        const thePercentage = conditions([
-            [pageIndex < curPageIndex, 1],
-            [pageIndex === curPageIndex, percentages[0]],
-            [pageIndex === curPageIndex + 1, percentages[1]],
-        ], -1);
-        if (alwaysRender
-            || page.alwaysRender
-            || pageIndex === curPageIndex - 1
-            || pageIndex === curPageIndex
-            || pageIndex === curPageIndex + 1) {
-            return page.elem({
-                thePageIndex: pageIndex,
-                thePage: pages[pageIndex],
-                thePercentage,
-                curPage: pages[curPageIndex],
-                curPageIndex,
-                scrollTo,
-            });
-        }
-        return React.createElement(React.Fragment, null);
-    })()))));
+        } }, pages.map((page, pageIndex) => {
+        var _a;
+        return (React.createElement("div", Object.assign({ key: pageIndex }, page.pageProps, { style: {
+                position: "relative",
+                overflow: "visible",
+                width: `${pageWidth}px`,
+                height: `${pageHeight * page.colspan}px`,
+                ...(_a = page.pageProps) === null || _a === void 0 ? void 0 : _a.style,
+            } }), (() => {
+            const thePercentage = conditions([
+                [pageIndex < curPageIndex, 1],
+                [pageIndex === curPageIndex, percentages[0]],
+                [pageIndex === curPageIndex + 1, percentages[1]],
+            ], -1);
+            if (alwaysRender
+                || page.alwaysRender
+                || pageIndex === curPageIndex - 1
+                || pageIndex === curPageIndex
+                || pageIndex === curPageIndex + 1) {
+                return page.elem({
+                    thePageIndex: pageIndex,
+                    thePage: pages[pageIndex],
+                    thePercentage,
+                    curPage: pages[curPageIndex],
+                    curPageIndex,
+                    scrollTo,
+                });
+            }
+            return React.createElement(React.Fragment, null);
+        })()));
+    }));
 }
 //# sourceMappingURL=index.js.map

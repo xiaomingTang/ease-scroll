@@ -1,5 +1,6 @@
 import { conditions } from "@Src/utils/logic"
 import React, {
+  HTMLAttributes,
   useCallback, useMemo, useRef, useState,
 } from "react"
 
@@ -42,8 +43,20 @@ export interface EasePageOptions {
    * 可以为 0 或 小数, 不得为负数, 比方说放一些 position: fixed 的元素
    */
   colspan: number;
-  elem: (elemOpions: EaseElemOptions) => React.ReactNode;
+  elem: (elemOpions: EaseElemOptions) => JSX.Element | undefined | null | false;
   alwaysRender?: boolean;
+  /**
+   * 直接添加到 Page 容器上
+   *
+   * 如果你修改了 style.position 或 style.height 或其他影响该 page 高度的属性
+   *
+   * 则会影响到后续的 Page 的滚动相关的计算, 因此强烈不建议配置
+   *
+   * 如果必须要配置, 则一定要谨慎
+   *
+   * 当你确信不会影响到 page 容器的高度, 或者后面的 page 容器不需要计算滚动了, 才可以配置
+   */
+  pageProps?: HTMLAttributes<HTMLDivElement>;
 }
 
 export interface EaseScrollOptions {
@@ -126,11 +139,12 @@ export function EaseScroll({
     overflowY: "auto",
   }}>
     {
-      pages.map((page, pageIndex) => (<div key={pageIndex} style={{
+      pages.map((page, pageIndex) => (<div key={pageIndex} {...page.pageProps} style={{
         position: "relative",
         overflow: "visible",
         width: `${pageWidth}px`,
         height: `${pageHeight * page.colspan}px`,
+        ...page.pageProps?.style,
       }}>
         {
           (() => {
